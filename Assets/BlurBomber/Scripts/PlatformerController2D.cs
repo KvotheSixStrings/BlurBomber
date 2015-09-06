@@ -49,22 +49,24 @@ public class PlatformerController2D : MonoBehaviour {
 	}
 	
 	void Update () {
-		Vector2 direction = Input.GetAxis("Horizontal") * transform.right + 
-							Input.GetAxis("Vertical") * transform.up;
+		float x = Input.GetAxis("Horizontal");
+		float y = Input.GetAxis("Vertical");
+
+		if (x > 0.1f) motor.facingRight = true;
+		else if (x < -0.1f) motor.facingRight = false;
+	
+		Vector2 direction = Mathf.Abs(x) * transform.right + y * transform.up;
 		direction.Normalize();
 		motor.targetVelocity = direction * speed;
+
 		bool jumpPressed = Input.GetButton("Jump");
 		motor.shouldJump = jumpPressed;
-		// animator.SetBool("jumpPressed", jumpPressed);
-		// animator.SetBool("grounded", motor.isGrounded);
+		animator.SetBool("grounded", motor.isGrounded);
 
-		// if (direction.x > 0.1f)	transform.localEulerAngles = Vector3.zero;
-		// else if (direction.x < -0.1f) transform.localEulerAngles = Vector3.up * 180;
-	
 		Vector2 v = GetComponent<Rigidbody2D>().velocity;
 		animator.SetFloat("speed", Mathf.Abs(v.x));
 		animator.SetFloat("yVelocity", v.y);
-		if (v.x * direction.x < 0 && !animator.GetBool("skidding")) {
+		if (motor.isGrounded && v.x * direction.x < 0 && !animator.GetBool("skidding")) {
 			dustParticles.Play();
 			animator.SetBool("skidding", true);
 		}
@@ -73,18 +75,6 @@ public class PlatformerController2D : MonoBehaviour {
 			animator.SetBool("skidding", false);
 		}
 
-		// transform.up = motor.contactNorm;
 		if (Input.GetButtonUp("Fire1")) gun.Shoot(transform.right, v);
-	}	
-
-	void OnDrawGizmos () {
-		Vector3 heading = Vector3.Cross(
-			(Vector3)motor.contactNorm,
-			Vector3.forward * transform.localScale.x
-		);
-
-		Vector3 start = transform.position;
-		Vector3 end = start + heading;
-		Gizmos.DrawLine(start, end);
 	}
 }

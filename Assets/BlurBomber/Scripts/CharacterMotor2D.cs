@@ -25,10 +25,10 @@ using Paraphernalia.Extensions;
 public class CharacterMotor2D : MonoBehaviour {
  
  	public bool hugGround = true;
+ 	public bool facingRight = true;
 	public float maxSpeedChange = 1.0f;
 	public float jumpHeight = 1.0f;
 	public float airMovement = 0.1f;
-	public float jumpCancelRate = 0.5f;
 	public bool inControl = true;
 	public LayerMask environmentLayers = -1;
 	
@@ -52,6 +52,10 @@ public class CharacterMotor2D : MonoBehaviour {
 		get { return (CircleCollider2D)GetComponent<Collider2D>(); }
 	}
 
+	public float heading {
+		get { return (facingRight ? 1 : -1); }
+	}
+
 	void HugGround () {
 		RaycastHit2D hit = Physics2D.CircleCast(
 			transform.TransformPoint(circleCollider.offset),
@@ -63,7 +67,11 @@ public class CharacterMotor2D : MonoBehaviour {
 
 		if (hit.collider != null) {
 			isGrounded = true;
-			transform.up = hit.normal;
+			transform.rotation = Quaternion.LookRotation(
+				Vector3.forward * heading, 
+				hit.normal
+			);
+
 			Rigidbody2D r = GetComponent<Rigidbody2D>();
 			r.AddForce(r.velocity.magnitude * (hit.point - (Vector2)transform.position), ForceMode.Acceleration);
 		}
@@ -82,11 +90,13 @@ public class CharacterMotor2D : MonoBehaviour {
 		Vector2 velocityChange = (targetVelocity - velocity);
 		velocityChange = velocityChange.normalized * Mathf.Clamp(velocityChange.magnitude, -maxSpeedChange, maxSpeedChange);
 
+		rigidbody2D.gravityScale = isGrounded ? 0 : 1;
 		if (inAir) {
 			velocityChange.y = 0;
 			velocityChange = velocityChange * airMovement;
 		}
 		else if (shouldJump) {
+			isGrounded = false;
 			rigidbody2D.velocity = (Vector2)transform.right * Vector2.Dot(velocity, transform.right) + JumpVelocity();
 		}
 		
@@ -94,13 +104,21 @@ public class CharacterMotor2D : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
-		if (hugGround) HugGround();		
+		if (hugGround && isGrounded) HugGround();		
 		if (inControl) UpdateForces();
 	}
 
 	void Update () {
 		if (inAir) {
-			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime);
+			transform.rotation = Quaternion.Slerp(
+				transform.rotation, 
+				Quaternion.LookRotation(Vector3.forward * heading),
+				Time.deltaTime * 10
+			);
 		}
+	}
+
+	void OnCollisionStay2D (Collision2D collision) {
+		if (collision.gameObject.InLayerMask(environmentLayers)) isGrounded = true;
 	}
 }
