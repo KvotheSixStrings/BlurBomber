@@ -26,6 +26,8 @@ public class CharacterMotor2D : MonoBehaviour {
  
  	public bool hugGround = true;
  	public bool facingRight = true;
+ 	public float groundCheckDist = 1;
+ 	public float rotationSpeed = 100;
 	public float maxSpeedChange = 1.0f;
 	public float jumpHeight = 1.0f;
 	public float airMovement = 0.1f;
@@ -37,12 +39,6 @@ public class CharacterMotor2D : MonoBehaviour {
 	[HideInInspector] public Vector2 targetVelocity = Vector2.zero;	
 
 	[Range(0, 90)] public int maxIncline = 30;
-	public int sweepSteps;
-	private Vector2 _contactNorm = Vector2.zero;
-	public Vector2 contactNorm {
-		get { return _contactNorm; }
-	}
-
 	public bool isGrounded = true;	
 	public bool inAir {
 		get { return !isGrounded; }
@@ -61,19 +57,23 @@ public class CharacterMotor2D : MonoBehaviour {
 			transform.TransformPoint(circleCollider.offset),
 			circleCollider.radius, 
 			-transform.up,
-			0.1f, 
+			groundCheckDist, 
 			environmentLayers
 		);
 
-		if (hit.collider != null) {
+		if (hit.collider != null && Vector2.Angle(transform.up, hit.normal) < maxIncline) {
 			isGrounded = true;
-			transform.rotation = Quaternion.LookRotation(
-				Vector3.forward * heading, 
-				hit.normal
+			transform.rotation = Quaternion.Slerp(
+				transform.rotation,
+				Quaternion.LookRotation(
+					Vector3.forward * heading, 
+					hit.normal
+				),
+				Time.deltaTime * rotationSpeed
 			);
 
 			Rigidbody2D r = GetComponent<Rigidbody2D>();
-			r.AddForce(r.velocity.magnitude * (hit.point - (Vector2)transform.position), ForceMode.Acceleration);
+			r.AddForce(r.velocity.magnitude * (hit.point - (Vector2)transform.position).normalized, ForceMode.Force);
 		}
 		else {
 			isGrounded = false;
@@ -90,7 +90,6 @@ public class CharacterMotor2D : MonoBehaviour {
 		Vector2 velocityChange = (targetVelocity - velocity);
 		velocityChange = velocityChange.normalized * Mathf.Clamp(velocityChange.magnitude, -maxSpeedChange, maxSpeedChange);
 
-		rigidbody2D.gravityScale = isGrounded ? 0 : 1;
 		if (inAir) {
 			velocityChange.y = 0;
 			velocityChange = velocityChange * airMovement;
@@ -113,7 +112,7 @@ public class CharacterMotor2D : MonoBehaviour {
 			transform.rotation = Quaternion.Slerp(
 				transform.rotation, 
 				Quaternion.LookRotation(Vector3.forward * heading),
-				Time.deltaTime * 10
+				Time.deltaTime * rotationSpeed
 			);
 		}
 	}

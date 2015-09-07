@@ -36,7 +36,7 @@ public class Gun : MonoBehaviour {
 		if (Time.time - launchTime > launchDelay) {
 			launchTime = Time.time;
 			Projectile projectile = GetNextProjectile();
-			projectile.Fire(transform.position, dir * 10 + 0.05f * parentVelocity);
+			projectile.Fire(transform.position, dir, parentVelocity);
 			AudioManager.PlayEffect(fireSound, transform, Random.Range(0.7f, 1), Random.Range(0.95f, 1.05f));
 			return kickbackForce;
 		}

@@ -18,13 +18,13 @@ DEALINGS IN THE SOFTWARE.
 
 using UnityEngine;
 using System.Collections;
+using Paraphernalia.Extensions;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CharacterMotor2D))]
 public class PlatformerController2D : MonoBehaviour {
 
-	public float speed = 10;
-	public float turnSpeed = 3;
+	public float maxSpeed = 10;
 	public ParticleSystem dustParticles;
 	public Gun gun;
 
@@ -54,27 +54,37 @@ public class PlatformerController2D : MonoBehaviour {
 
 		if (x > 0.1f) motor.facingRight = true;
 		else if (x < -0.1f) motor.facingRight = false;
+
+		transform.rotation = Quaternion.LookRotation(Vector3.forward * motor.heading, transform.up);
 	
 		Vector2 direction = Mathf.Abs(x) * transform.right + y * transform.up;
 		direction.Normalize();
-		motor.targetVelocity = direction * speed;
+		motor.targetVelocity = direction * maxSpeed;
 
 		bool jumpPressed = Input.GetButton("Jump");
 		motor.shouldJump = jumpPressed;
 		animator.SetBool("grounded", motor.isGrounded);
 
 		Vector2 v = GetComponent<Rigidbody2D>().velocity;
-		animator.SetFloat("speed", Mathf.Abs(v.x));
+		float speed = Mathf.Abs(v.x);
+		animator.SetFloat("speed", speed);
 		animator.SetFloat("yVelocity", v.y);
 		if (motor.isGrounded && v.x * direction.x < 0 && !animator.GetBool("skidding")) {
 			dustParticles.Play();
 			animator.SetBool("skidding", true);
 		}
-		else if (v.x * direction.x > 0 || Mathf.Abs(v.x) < 0.1) {
+		else if (v.x * direction.x > 0 || speed < 0.1f || motor.inAir) {
 			dustParticles.Stop();
 			animator.SetBool("skidding", false);
 		}
 
-		if (Input.GetButtonUp("Fire1")) gun.Shoot(transform.right, v);
+		float alpha = Mathf.Clamp01(speed / maxSpeed) * 0.3f;
+		dustParticles.startColor = dustParticles.startColor.SetAlpha(alpha);
+
+		if (Input.GetButtonUp("Fire1")) animator.SetTrigger("fire"); 
+	}
+
+	public void Fire() {
+		gun.Shoot(transform.right, GetComponent<Rigidbody2D>().velocity);
 	}
 }
