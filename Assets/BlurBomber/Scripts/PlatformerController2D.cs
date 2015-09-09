@@ -50,14 +50,14 @@ public class PlatformerController2D : MonoBehaviour {
 	
 	void Update () {
 		float x = Input.GetAxis("Horizontal");
-		float y = Input.GetAxis("Vertical");
+		// float y = Input.GetAxis("Vertical");
 
 		if (x > 0.1f) motor.facingRight = true;
 		else if (x < -0.1f) motor.facingRight = false;
 
 		transform.rotation = Quaternion.LookRotation(Vector3.forward * motor.heading, transform.up);
 	
-		Vector2 direction = Mathf.Abs(x) * transform.right + y * transform.up;
+		Vector2 direction = Mathf.Abs(x) * transform.right;// + y * transform.up;
 		direction.Normalize();
 		motor.targetVelocity = direction * maxSpeed;
 

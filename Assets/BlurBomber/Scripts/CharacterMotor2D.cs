@@ -19,6 +19,7 @@ DEALINGS IN THE SOFTWARE.
 using UnityEngine;
 using System.Collections;
 using Paraphernalia.Extensions;
+using Paraphernalia.Utils;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CircleCollider2D))]
@@ -26,12 +27,14 @@ public class CharacterMotor2D : MonoBehaviour {
  
  	public bool hugGround = true;
  	public bool facingRight = true;
+	public bool inControl = true;
  	public float groundCheckDist = 1;
  	public float rotationSpeed = 100;
 	public float maxSpeedChange = 1.0f;
 	public float jumpHeight = 1.0f;
 	public float airMovement = 0.1f;
-	public bool inControl = true;
+	public float loopBoost = 10;
+	public Interpolate.EaseType loopEase = Interpolate.EaseType.InCirc;
 	public LayerMask environmentLayers = -1;
 	
 	[HideInInspector] public bool shouldJump = false;
@@ -53,16 +56,18 @@ public class CharacterMotor2D : MonoBehaviour {
 	}
 
 	void HugGround () {
+		Vector3 center = transform.TransformPoint(circleCollider.offset);
 		RaycastHit2D hit = Physics2D.CircleCast(
-			transform.TransformPoint(circleCollider.offset),
+			center,
 			circleCollider.radius, 
 			-transform.up,
 			groundCheckDist, 
 			environmentLayers
 		);
 
-		if (hit.collider != null && Vector2.Angle(transform.up, hit.normal) < maxIncline) {
+		if (hit.collider != null) {
 			isGrounded = true;
+
 			transform.rotation = Quaternion.Slerp(
 				transform.rotation,
 				Quaternion.LookRotation(
@@ -73,7 +78,10 @@ public class CharacterMotor2D : MonoBehaviour {
 			);
 
 			Rigidbody2D r = GetComponent<Rigidbody2D>();
-			r.AddForce(r.velocity.magnitude * (hit.point - (Vector2)transform.position).normalized, ForceMode.Force);
+			float t = Interpolate.Ease(loopEase, 0.5f + Vector2.Dot(hit.normal, -Vector2.up) * 0.5f);
+			Vector2 centrifugalForce = -r.velocity.magnitude * hit.normal;
+			Vector2 tangentialForce = r.velocity * loopBoost;
+			r.AddForce(Vector2.Lerp(centrifugalForce, tangentialForce, t), ForceMode.Acceleration);
 		}
 		else {
 			isGrounded = false;
