@@ -22,9 +22,10 @@ using Paraphernalia.Extensions;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CharacterMotor2D))]
-public class PlatformerController2D : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
-	public float maxSpeed = 10;
+	public float runSpeed = 10;
+	public float climbSpeed = 10;
 	public ParticleSystem dustParticles;
 	public Gun gun;
 
@@ -50,35 +51,35 @@ public class PlatformerController2D : MonoBehaviour {
 	
 	void Update () {
 		float x = Input.GetAxis("Horizontal");
-		// float y = Input.GetAxis("Vertical");
+		float y = Input.GetAxis("Vertical");
 
 		if (x > 0.1f) motor.facingRight = true;
 		else if (x < -0.1f) motor.facingRight = false;
-
-		transform.rotation = Quaternion.LookRotation(Vector3.forward * motor.heading, transform.up);
 	
-		Vector2 direction = Mathf.Abs(x) * transform.right;// + y * transform.up;
-		direction.Normalize();
-		motor.targetVelocity = direction * maxSpeed;
-
+		Vector2 targetVelocity = Mathf.Abs(x) * transform.right * runSpeed;
 		bool jumpPressed = Input.GetButton("Jump");
 		motor.shouldJump = jumpPressed;
+		motor.shouldClimb = Mathf.Abs(y) > 0.1f;
 		animator.SetBool("grounded", motor.isGrounded);
+		animator.SetBool("climbing", motor.onLadder);
+		if (motor.onLadder) targetVelocity += y * Vector2.up * climbSpeed;
+		motor.targetVelocity = targetVelocity;
 
 		Vector2 v = GetComponent<Rigidbody2D>().velocity;
 		float speed = Mathf.Abs(v.x);
 		animator.SetFloat("speed", speed);
 		animator.SetFloat("yVelocity", v.y);
-		if (motor.isGrounded && v.x * direction.x < 0 && !animator.GetBool("skidding")) {
+
+		if (motor.isGrounded && v.x * targetVelocity.x < 0 && !animator.GetBool("skidding")) {
 			dustParticles.Play();
 			animator.SetBool("skidding", true);
 		}
-		else if (v.x * direction.x > 0 || speed < 0.1f || motor.inAir) {
+		else if (v.x * targetVelocity.x > 0 || speed < 0.1f || motor.inAir) {
 			dustParticles.Stop();
 			animator.SetBool("skidding", false);
 		}
 
-		float alpha = Mathf.Clamp01(speed / maxSpeed) * 0.3f;
+		float alpha = Mathf.Clamp01(speed / runSpeed) * 0.5f;
 		dustParticles.startColor = dustParticles.startColor.SetAlpha(alpha);
 
 		if (Input.GetButtonUp("Fire1")) animator.SetTrigger("fire"); 

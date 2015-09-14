@@ -7,6 +7,9 @@ public class HealthController : MonoBehaviour {
 	public delegate void OnHealthChanged(float health, float prevHealth, float maxHealth);
 	public event OnHealthChanged onHealthChanged = delegate {};
 
+	public delegate void OnAnyHealthChanged(HealthController healthController, float health, float prevHealth, float maxHealth);
+	public static event OnAnyHealthChanged onAnyHealthChanged = delegate {};
+
 	public delegate void OnAnyLifeChangeEvent(HealthController controller);
 	public static event OnAnyLifeChangeEvent onAnyDeath = delegate {};
 
@@ -34,6 +37,7 @@ public class HealthController : MonoBehaviour {
 			
 			if (_health != value) {
 				onHealthChanged(value, _health, maxHealth);
+				onAnyHealthChanged(this, value, _health, maxHealth);
 				_health = value;
 			}
 		}
