@@ -26,10 +26,12 @@ using Paraphernalia.Utils;
 public class CharacterMotor2D : MonoBehaviour {
  
  	public bool hugGround = true;
+ 	public float minHugSpeed = 20;
  	public float groundCheckDist = 1;
  	public float rotationSpeed = 100;
 	public float maxSpeedChange = 1.0f;
 	public float jumpHeight = 1.0f;
+	public float jumpCancelRate = 2;
 	public float airMovement = 0.1f;
 	public float loopBoost = 10;
 	public Interpolate.EaseType loopEase = Interpolate.EaseType.InCirc;
@@ -39,7 +41,6 @@ public class CharacterMotor2D : MonoBehaviour {
 	[HideInInspector] public bool inControl = true;
  	[HideInInspector] public bool shouldClimb = false;
  	[HideInInspector] public bool shouldJump = false;
-	[HideInInspector] public bool cancelJump = false;
 	[HideInInspector] public Vector2 targetVelocity = Vector2.zero;	
 
 	private bool _facingRight = true;
@@ -64,9 +65,13 @@ public class CharacterMotor2D : MonoBehaviour {
 			}
 		}
 	}
-	public bool isGrounded = true;	
+
+	private bool _isGrounded = false;	
+	public bool isGrounded {
+		get { return _isGrounded; }
+	}
 	public bool inAir {
-		get { return !isGrounded && !onLadder; }
+		get { return !_isGrounded && !onLadder; }
 	}
 
 	public Rigidbody2D _rigidbody2D;
@@ -90,13 +95,13 @@ public class CharacterMotor2D : MonoBehaviour {
 	private Vector2 _groundNormal = Vector2.up;
 	private Vector2 targetNormal {
 		get {
-			if (isGrounded) return _groundNormal;
+			if (_isGrounded && rigidbody2D.velocity.magnitude > minHugSpeed) return _groundNormal;
 			else return Vector2.up;
 		}
 		set { _groundNormal = value; }
 	}
 
-	void HugGround () {
+	void CheckGround () {
 		Vector3 center = transform.TransformPoint(circleCollider.offset);
 		RaycastHit2D hit = Physics2D.CircleCast(
 			center,
@@ -107,15 +112,18 @@ public class CharacterMotor2D : MonoBehaviour {
 		);
 
 		if (hit.collider != null && Vector2.Angle(hit.normal, transform.up) < maxIncline) {
-			isGrounded = true;
-			_groundNormal = hit.normal;
-			float t = Interpolate.Ease(loopEase, 0.5f + Vector2.Dot(hit.normal, -Vector2.up) * 0.5f);
-			Vector2 centrifugalForce = -rigidbody2D.velocity.magnitude * hit.normal;
-			Vector2 tangentialForce = rigidbody2D.velocity * loopBoost;
-			rigidbody2D.AddForce(Vector2.Lerp(centrifugalForce, tangentialForce, t), ForceMode.Acceleration);
+			_isGrounded = true;
+
+			if (hugGround && rigidbody2D.velocity.magnitude > minHugSpeed) {
+				_groundNormal = hit.normal;
+				float t = Interpolate.Ease(loopEase, 0.5f + Vector2.Dot(hit.normal, -Vector2.up) * 0.5f);
+				Vector2 centrifugalForce = -rigidbody2D.velocity.magnitude * hit.normal;
+				Vector2 tangentialForce = rigidbody2D.velocity * loopBoost;
+				rigidbody2D.AddForce(Vector2.Lerp(centrifugalForce, tangentialForce, t), ForceMode.Acceleration);
+			}
 		}
 		else {
-			isGrounded = false;
+			_isGrounded = false;
 		}
 	}
  
@@ -133,9 +141,14 @@ public class CharacterMotor2D : MonoBehaviour {
 		if (inAir) {
 			velocityChange.y = 0;
 			velocityChange = velocityChange * airMovement;
+			if (!shouldJump && velocity.y > 0) {
+				velocity.y = Mathf.Lerp(velocity.y, 0, Time.fixedDeltaTime * jumpCancelRate);
+				velocityChange.y = 0;
+				rigidbody2D.velocity = velocity;
+			}
 		}
 		else if (shouldJump) {
-			isGrounded = false;
+			_isGrounded = false;
 			rigidbody2D.velocity = (Vector2)transform.right * Vector2.Dot(velocity, transform.right) + JumpVelocity();
 		}
 		
@@ -144,7 +157,7 @@ public class CharacterMotor2D : MonoBehaviour {
 	
 	void FixedUpdate () {
 		if (inControl) UpdateForces();
-		if (hugGround && isGrounded) HugGround();
+		if (_isGrounded) CheckGround();
 
 		transform.rotation = Quaternion.Slerp(
 			transform.rotation,
@@ -157,7 +170,7 @@ public class CharacterMotor2D : MonoBehaviour {
 		if (collision.gameObject.InLayerMask(environmentLayers)) {
 			foreach(ContactPoint2D contact in collision.contacts) {
 				if (Vector2.Angle(contact.normal, transform.up) < maxIncline) {
-					isGrounded = true;
+					_isGrounded = true;
 					return;
 				}
 			}

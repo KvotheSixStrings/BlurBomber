@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Paraphernalia.Components;
+using Paraphernalia.Utils;
 
 public class HealthController : MonoBehaviour {
 
@@ -18,6 +19,8 @@ public class HealthController : MonoBehaviour {
 	public event OnLifeChangeEvent onResurection = delegate {};
 
 	public AudioClip deathSound;
+	public string particlesName;
+	public bool disableOnDeath = false;
 
 	public float maxHealth = 3;
 	private float _health = 3;
@@ -28,8 +31,10 @@ public class HealthController : MonoBehaviour {
 		set {
 			if (value <= 0 && _health > 0) {
 				if (deathSound != null) AudioManager.PlayEffect(deathSound);
+				if (!string.IsNullOrEmpty(particlesName)) ParticleManager.Play(particlesName, transform.position);
 				onAnyDeath(this);
 				onDeath();
+				if (disableOnDeath) GameObjectUtils.Destroy(gameObject);
 			}
 			else if (value > 0 && _health == 0) {
 				onResurection();
@@ -39,6 +44,10 @@ public class HealthController : MonoBehaviour {
 				onHealthChanged(value, _health, maxHealth);
 				onAnyHealthChanged(this, value, _health, maxHealth);
 				_health = value;
+			}
+
+			if (_health > maxHealth) {
+				_health = maxHealth;
 			}
 		}
 	}

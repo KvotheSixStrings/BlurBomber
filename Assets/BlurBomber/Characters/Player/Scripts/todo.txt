@@ -1,0 +1,27 @@
+UI
+level select screen
+coin counter
+
+
+Gameplay needs
+	portals to different sections of the map
+	spawn areas (spawn points in a rect, repeat options)
+
+enemies
+	generic boss
+	bomber (swoops overhead, drops bombs)
+	bats, hang on ceiling, swoops down
+
+
+player animations needed:
+	take hit
+	take continuous damage
+	death
+	charge shot
+
+Level Design
+	level 1: 
+		layout done
+		needs art, boss, name
+	levels 2-8:
+		nothing done

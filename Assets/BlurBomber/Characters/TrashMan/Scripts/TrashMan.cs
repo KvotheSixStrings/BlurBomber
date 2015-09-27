@@ -19,6 +19,7 @@ public class TrashMan : BadGuy {
 	}
 
 	void Update () {
+		if (target == null) return;
 		float distance = Vector2.Distance(transform.position, target.transform.position);
 		float heading = Mathf.Sign(target.transform.position.x - transform.position.x);
 

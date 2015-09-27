@@ -18,6 +18,7 @@ DEALINGS IN THE SOFTWARE.
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Paraphernalia.Extensions;
 
 [RequireComponent(typeof(Animator))]
@@ -28,6 +29,8 @@ public class PlayerController : MonoBehaviour {
 	public float climbSpeed = 10;
 	public ParticleSystem dustParticles;
 	public Gun gun;
+
+	public List<Powerup> powerups = new List<Powerup>();
 
 	private Animator _animator;
 	public Animator animator {
@@ -50,13 +53,24 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void Update () {
+		RemoveExpiredPowerups();
+
 		float x = Input.GetAxis("Horizontal");
 		float y = Input.GetAxis("Vertical");
 
 		if (x > 0.1f) motor.facingRight = true;
 		else if (x < -0.1f) motor.facingRight = false;
-	
+
 		Vector2 targetVelocity = Mathf.Abs(x) * transform.right * runSpeed;
+		if (powerups.Count > 0) {
+			Debug.Log("HERE");
+			motor.maxSpeedChange = 1;
+			targetVelocity *= 100;
+		}
+		else {
+			motor.maxSpeedChange = 0.3f;
+		}
+
 		bool jumpPressed = Input.GetButton("Jump");
 		motor.shouldJump = jumpPressed;
 		motor.shouldClimb = Mathf.Abs(y) > 0.1f;
@@ -83,6 +97,13 @@ public class PlayerController : MonoBehaviour {
 		dustParticles.startColor = dustParticles.startColor.SetAlpha(alpha);
 
 		if (Input.GetButtonUp("Fire1")) animator.SetTrigger("fire"); 
+	}
+
+	void RemoveExpiredPowerups() {
+		for (int i = powerups.Count - 1; i >= 0; i--) {
+			Powerup powerup = powerups[i];
+			if (powerup.IsExpired()) powerups.RemoveAt(i);
+		}
 	}
 
 	public void Fire() {

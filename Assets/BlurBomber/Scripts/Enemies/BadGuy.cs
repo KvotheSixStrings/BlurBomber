@@ -8,7 +8,7 @@ public class BadGuy : MonoBehaviour {
 		get {
 			if (_target == null) {
 				GameObject go = GameObject.FindWithTag("Player");
-				_target = go.GetComponent<Rigidbody2D>();
+				if (go != null) _target = go.GetComponent<Rigidbody2D>();
 			}
 			return _target;
 		}

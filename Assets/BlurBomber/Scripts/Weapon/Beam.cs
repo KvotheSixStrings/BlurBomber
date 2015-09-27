@@ -175,6 +175,7 @@ public class Beam : MonoBehaviour {
 			if (p != null) p.OnHit();
 
 			HealthController h = go.GetComponent<HealthController>();
+			if (h == null) h = go.GetAncestorComponent<HealthController>();
 			if (h != null) h.TakeDamage(damagePerSecond * Time.deltaTime);
 		}
 		else beamDir = rayDir;
