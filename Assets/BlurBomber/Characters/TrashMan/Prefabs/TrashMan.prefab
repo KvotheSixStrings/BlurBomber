@@ -63,7 +63,7 @@ GameObject:
   - 114: {fileID: 11404282}
   - 95: {fileID: 9590022}
   - 114: {fileID: 11463524}
-  - 61: {fileID: 6107350}
+  - 114: {fileID: 11490512}
   m_Layer: 11
   m_Name: TrashMan
   m_TagString: Untagged
@@ -119,7 +119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -366.350006, y: -37.2400017, z: 0}
+  m_LocalPosition: {x: -47, y: 11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 415976}
@@ -243,19 +243,6 @@ PolygonCollider2D:
       - {x: .605000019, y: 0}
       - {x: .834999979, y: .0199999996}
       - {x: .925000012, y: .0399999991}
---- !u!61 &6107350
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 150280}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: .0655822754, y: 1.69194031}
-  serializedVersion: 2
-  m_Size: {x: 2.75755167, y: 3.43954325}
 --- !u!95 &9590022
 Animator:
   serializedVersion: 3
@@ -299,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe6ba88b3ecb945968f955b1630c7f23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bumpSound: {fileID: 0}
   hugGround: 1
   minHugSpeed: 20
   groundCheckDist: 1
@@ -332,10 +320,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31839d8b31cce4d798caa4e0d9e650d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recoveryTime: 2
   deathSound: {fileID: 8300000, guid: b640e5345fdd34bec9d42e300e201aec, type: 3}
   particlesName: explosion
-  disableOnDeath: 0
-  maxHealth: 3
+  disableOnDeath: 1
+  maxHealth: 5
 --- !u!114 &11479506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -354,6 +343,22 @@ MonoBehaviour:
   spraySize: 30
   kickbackForce: 1
   fireSound: {fileID: 8300000, guid: 97bf8d99edf5c43dbbbea375946893c5, type: 3}
+--- !u!114 &11490512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458d32b793c8845ff9ebd81dba50e2bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSpeed: 40
+  maxSpeed: 60
+  maxDamage: 10
+  takeXDamage: 1
+  takeYDamage: 0
 --- !u!212 &21211274
 SpriteRenderer:
   m_ObjectHideFlags: 1

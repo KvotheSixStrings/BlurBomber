@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &169772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 465314}
+  - 33: {fileID: 3331348}
+  - 23: {fileID: 2355818}
+  - 114: {fileID: 11426038}
+  m_Layer: 14
+  m_Name: BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &465314
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169772}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 776, y: 104.808128, z: 8.80000019}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!23 &2355818
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169772}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 596b292e3894f4b888871cdaf493ba79, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1860876175
+  m_SortingOrder: -100
+--- !u!33 &3331348
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169772}
+  m_Mesh: {fileID: 0}
+--- !u!114 &11426038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f847f9ec65d4b99bcc7422fcc4635b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closed: 1
+  solid: 1
+  addCollider: 0
+  points:
+  - position: {x: -226.723358, y: 35.4640541, z: 0}
+    inTangent: {x: -.648581743, y: -.761144996, z: 0}
+    outTangent: {x: .648581684, y: .761144996, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -217.355377, y: 47.4639587, z: 0}
+    inTangent: {x: -.922263622, y: -.386561602, z: 0}
+    outTangent: {x: .922263563, y: .386561722, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -183.224121, y: 53.6965179, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -175.774658, y: 87.3214798, z: 0}
+    inTangent: {x: -.903485656, y: -.428618312, z: 0}
+    outTangent: {x: .903485596, y: .428618491, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -143.558167, y: 95.0324478, z: 0}
+    inTangent: {x: -.995224059, y: .0976169333, z: 0}
+    outTangent: {x: .995224059, y: -.0976169333, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -104.614502, y: 84.5402985, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -122.614288, y: -.659887314, z: 0}
+    inTangent: {x: .555193603, y: .831721187, z: 0}
+    outTangent: {x: -.555193603, y: -.831721187, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -197.694885, y: -54.9010201, z: 0}
+    inTangent: {x: .47451663, y: -.88024652, z: 0}
+    outTangent: {x: -.47451663, y: .88024652, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -221.373444, y: -48.7356529, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -226.02713, y: 2.83376312, z: 0}
+    inTangent: {x: .971136153, y: -.238525853, z: 0}
+    outTangent: {x: -.971136153, y: .238525763, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -231.445801, y: 24.2548752, z: 0}
+    inTangent: {x: .98534596, y: -.170567453, z: 0}
+    outTangent: {x: -.98534596, y: .170567453, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -239.951447, y: 35.4611511, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  subdivisions: 9
+  sortingLayerName: Background
+  sortingOrder: -100
+  curveType: 1
+  meshLayers:
+  - name: 
+    layerType: 3
+    seed: 0
+    posOffset: {x: 0, y: 0, z: 0}
+    dirOffset: 0
+    spacing: .00999999978
+    positionVariation: 0
+    placementFrequency: 0
+    allowOverflow: 0
+    followPath: 0
+    alternateAngles: 0
+    angle: 0
+    angleVariation: 0
+    naturalAngle: 0
+    angularPlacementRange: 0
+    size: .00999999978
+    sizeVariation: 0
+    color: {r: .245999992, g: .236078545, b: .203687996, a: 1}
+    hueVariation: 0
+    saturationVariation: 0
+    valueVariation: 0
+    alphaVariation: 0
+    sprite: {fileID: 0}
+    materialIndex: 0
+    minTileSize: 0
+    outerJoinType: 0
+    innerJoinType: 0
+    allowStretching: 0
+    isTrigger: 0
+  objectLayers: []
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: addCollider
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 169772}
+  m_IsPrefabParent: 1

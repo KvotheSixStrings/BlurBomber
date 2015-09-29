@@ -20,11 +20,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Paraphernalia.Extensions;
+using Paraphernalia.Components;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CharacterMotor2D))]
 public class PlayerController : MonoBehaviour {
 
+	public AudioSource skidSound;
 	public float runSpeed = 10;
 	public float climbSpeed = 10;
 	public ParticleSystem dustParticles;
@@ -63,7 +65,6 @@ public class PlayerController : MonoBehaviour {
 
 		Vector2 targetVelocity = Mathf.Abs(x) * transform.right * runSpeed;
 		if (powerups.Count > 0) {
-			Debug.Log("HERE");
 			motor.maxSpeedChange = 1;
 			targetVelocity *= 100;
 		}
@@ -72,11 +73,14 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		bool jumpPressed = Input.GetButton("Jump");
-		motor.shouldJump = jumpPressed;
-		motor.shouldClimb = Mathf.Abs(y) > 0.1f;
+		if (motor.isGrounded && jumpPressed) AudioManager.PlayEffect("boing");
+
+		motor.shouldJump = (jumpPressed && !motor.onLadder);
+		motor.shouldClimb = Mathf.Abs(y) > 0.1f && !jumpPressed;
+		if (jumpPressed) motor.onLadder = false;
 		animator.SetBool("grounded", motor.isGrounded);
 		animator.SetBool("climbing", motor.onLadder);
-		if (motor.onLadder) targetVelocity += y * Vector2.up * climbSpeed;
+		if (motor.onLadder) targetVelocity.y = y * climbSpeed;
 		motor.targetVelocity = targetVelocity;
 
 		Vector2 v = GetComponent<Rigidbody2D>().velocity;
@@ -91,6 +95,15 @@ public class PlayerController : MonoBehaviour {
 		else if (v.x * targetVelocity.x > 0 || speed < 0.1f || motor.inAir) {
 			dustParticles.Stop();
 			animator.SetBool("skidding", false);
+		}
+
+		if (animator.GetBool("skidding")) {
+			float frac = speed / runSpeed;
+			skidSound.volume = frac;
+			skidSound.panStereo = Mathf.Sign(v.x) * frac;
+		}
+		else {
+			skidSound.volume = 0;
 		}
 
 		float alpha = Mathf.Clamp01(speed / runSpeed) * 0.5f;
@@ -108,5 +121,14 @@ public class PlayerController : MonoBehaviour {
 
 	public void Fire() {
 		gun.Shoot(transform.right, GetComponent<Rigidbody2D>().velocity);
+	}
+
+	public void Step() {
+		Vector2 v = GetComponent<Rigidbody2D>().velocity;
+		float speed = Mathf.Abs(v.x);
+		float frac = speed / runSpeed;
+		float pitch = Mathf.Lerp(0.93f, 1.5f, frac);
+		AudioManager.PlayEffect("step", transform, Mathf.Lerp(1.5f, 0.95f, frac), pitch);
+		AudioManager.PlayEffect("fast", transform, Mathf.Lerp(0, 1.3f, frac), pitch);
 	}
 }

@@ -20,11 +20,13 @@ using UnityEngine;
 using System.Collections;
 using Paraphernalia.Extensions;
 using Paraphernalia.Utils;
+using Paraphernalia.Components;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CircleCollider2D))]
 public class CharacterMotor2D : MonoBehaviour {
  
+ 	public AudioClip bumpSound;
  	public bool hugGround = true;
  	public float minHugSpeed = 20;
  	public float groundCheckDist = 1;
@@ -74,7 +76,7 @@ public class CharacterMotor2D : MonoBehaviour {
 		get { return !_isGrounded && !onLadder; }
 	}
 
-	public Rigidbody2D _rigidbody2D;
+	private Rigidbody2D _rigidbody2D;
 	new public Rigidbody2D rigidbody2D {
 		get { 
 			if (_rigidbody2D == null) {
@@ -99,6 +101,25 @@ public class CharacterMotor2D : MonoBehaviour {
 			else return Vector2.up;
 		}
 		set { _groundNormal = value; }
+	}
+
+	void Start () {
+		Vector3 center = transform.TransformPoint(circleCollider.offset);
+		RaycastHit2D hit = Physics2D.CircleCast(
+			center,
+			circleCollider.radius, 
+			-transform.up * 1,
+			groundCheckDist, 
+			environmentLayers
+		);
+
+		if (hit.collider != null) {
+			_isGrounded = true;
+			transform.position = hit.point + hit.normal * circleCollider.radius;
+		}
+		else {
+			_isGrounded = false;
+		}
 	}
 
 	void CheckGround () {
@@ -164,6 +185,14 @@ public class CharacterMotor2D : MonoBehaviour {
 			Quaternion.LookRotation(Vector3.forward * heading, targetNormal),
 			Time.deltaTime * rotationSpeed
 		);
+	}
+
+	void OnCollisionEnter2D (Collision2D collision) {
+		if (inAir && collision.gameObject.InLayerMask(environmentLayers) && collision.relativeVelocity.magnitude > 20) {
+			ContactPoint2D contact = collision.contacts[0];
+			float frac = collision.relativeVelocity.magnitude * -1 * Vector3.Dot(contact.normal, collision.relativeVelocity) / 200f;
+			AudioManager.PlayEffect(bumpSound, transform, Mathf.Lerp(0.1f, 1.5f, frac), Mathf.Lerp(0.7f, 1.5f, frac));
+		}
 	}
 
 	void OnCollisionStay2D (Collision2D collision) {

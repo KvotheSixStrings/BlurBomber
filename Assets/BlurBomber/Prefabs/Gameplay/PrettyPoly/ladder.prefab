@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &134678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 441534}
+  - 33: {fileID: 3303754}
+  - 23: {fileID: 2390852}
+  - 114: {fileID: 11469526}
+  - 68: {fileID: 6880692}
+  m_Layer: 13
+  m_Name: ladder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &441534
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -567.599976, y: -18.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!23 &2390852
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134678}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &3303754
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134678}
+  m_Mesh: {fileID: 0}
+--- !u!68 &6880692
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134678}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+  - {x: .0297241211, y: 3.60987473}
+  - {x: -.0808105469, y: 55.0228386}
+--- !u!114 &11469526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f847f9ec65d4b99bcc7422fcc4635b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closed: 0
+  solid: 1
+  addCollider: 1
+  points:
+  - position: {x: .0297241211, y: 3.60987473, z: 0}
+    inTangent: {x: -25.1628418, y: 1.0815599, z: 0}
+    outTangent: {x: 10.2538757, y: -1.62839222, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -.0808105469, y: 55.0228386, z: 0}
+    inTangent: {x: -16.9993038, y: 6.55204296, z: 0}
+    outTangent: {x: 9.07958794, y: -5.28761482, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  subdivisions: 10
+  sortingLayerName: Default
+  sortingOrder: 0
+  curveType: 0
+  meshLayers:
+  - name: ladder
+    layerType: 0
+    seed: 0
+    posOffset: {x: 0, y: 0, z: 0}
+    dirOffset: 0
+    spacing: 1
+    positionVariation: 0
+    placementFrequency: 1
+    allowOverflow: 1
+    followPath: 0
+    alternateAngles: 0
+    angle: 0
+    angleVariation: 0
+    naturalAngle: 0
+    angularPlacementRange: 0
+    size: 1
+    sizeVariation: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    hueVariation: 0
+    saturationVariation: 0
+    valueVariation: 0
+    alphaVariation: 0
+    sprite: {fileID: 21300000, guid: 024acc20be7ed45eea2998056c83af38, type: 3}
+    materialIndex: 0
+    minTileSize: 100
+    outerJoinType: 0
+    innerJoinType: 0
+    allowStretching: 0
+    isTrigger: 0
+  objectLayers: []
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 134678}
+  m_IsPrefabParent: 1

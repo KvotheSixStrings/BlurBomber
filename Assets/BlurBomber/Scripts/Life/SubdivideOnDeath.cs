@@ -34,6 +34,8 @@ public class SubdivideOnDeath : MonoBehaviour {
             angle += spread;
         	SubdivideOnDeath s = go.GetComponent<SubdivideOnDeath>();
 			s.currentDepth = currentDepth + 1;
+			Rigidbody2D r = go.GetComponent<Rigidbody2D>();
+			r.isKinematic = false;
 		}
 		currentDepth++;
 		transform.localScale = transform.localScale * sizeScale;

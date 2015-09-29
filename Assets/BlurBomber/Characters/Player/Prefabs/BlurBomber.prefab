@@ -14,7 +14,6 @@ GameObject:
   - 114: {fileID: 11487124}
   - 114: {fileID: 11464488}
   - 114: {fileID: 11413648}
-  - 114: {fileID: 11423368}
   m_Layer: 9
   m_Name: BlurBomber
   m_TagString: Player
@@ -48,6 +47,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 445628}
   - 212: {fileID: 21285170}
+  - 82: {fileID: 8294988}
   m_Layer: 9
   m_Name: legs
   m_TagString: Untagged
@@ -297,6 +297,76 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 1}
   serializedVersion: 2
   m_Radius: 1
+--- !u!82 &8294988
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117900}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6310a4d97cdf34cee9b649ab5b9290e3, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0
+  m_Pitch: -3
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9597442
 Animator:
   serializedVersion: 3
@@ -325,25 +395,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31839d8b31cce4d798caa4e0d9e650d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recoveryTime: 2
   deathSound: {fileID: 8300000, guid: b640e5345fdd34bec9d42e300e201aec, type: 3}
   particlesName: explosion
   disableOnDeath: 1
   maxHealth: 10
---- !u!114 &11423368
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458d32b793c8845ff9ebd81dba50e2bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  disableOnCollision: 0
-  minSpeed: 50
-  maxSpeed: 60
 --- !u!114 &11464488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -355,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe6ba88b3ecb945968f955b1630c7f23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bumpSound: {fileID: 8300000, guid: 328da48b05ed248e296c98a29ebc7528, type: 3}
   hugGround: 1
   minHugSpeed: 20
   groundCheckDist: .400000006
@@ -388,6 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8982902afb349b0bc0e8fce11514e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skidSound: {fileID: 8294988}
   runSpeed: 100
   climbSpeed: 10
   dustParticles: {fileID: 19816606}

@@ -7,8 +7,11 @@ using Paraphernalia.Extensions;
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(PolygonCollider2D))]
+[RequireComponent(typeof(AudioSource))]
 public class Beam : MonoBehaviour {
 
+	public AudioClip normalSound;
+	public AudioClip hitSound;
 	public float damagePerSecond = 0.5f;
 	public int sortingOrder = 100;
 	[SortingLayer] public string sortingLayer;
@@ -17,11 +20,15 @@ public class Beam : MonoBehaviour {
 	[Range(8,512)]public int segments = 8;
 	public float halfWidth = 0.1f;
 	public Vector2 rayDir = Vector2.right;
+	public float rayLen = 10;
 	public LayerMask collisionLayers = -1;
 	public List<Collider2D> ignoredColliders = new List<Collider2D>();
+	public ParticleSystem particles;
+	[Range(0,1)] public float variation = 1;
 
 	private float[] offsets;
 	private Vector2 beamDir = Vector2.right;
+	private new AudioSource audio;
 
 	private Mesh _mesh;
 	private Mesh mesh {
@@ -34,17 +41,20 @@ public class Beam : MonoBehaviour {
 	}
 
 	void Start() {
+		audio = GetComponent<AudioSource>();
 		Setup();
 	}
 
 	void OnEnable() {
 		GetComponent<MeshRenderer>().enabled = true;
 		GetComponent<PolygonCollider2D>().enabled = true;
+		if (particles) particles.Play();
 	}
 
 	void OnDisable() {
 		GetComponent<MeshRenderer>().enabled = false;
 		GetComponent<PolygonCollider2D>().enabled = false;
+		if (particles) particles.Stop();
 	}
 
 	[ContextMenu("Setup")]
@@ -144,7 +154,7 @@ public class Beam : MonoBehaviour {
 				transform.position, 
 				halfWidth,
 				rayDir.normalized, 
-				rayDir.magnitude, 
+				rayLen, 
 				collisionLayers
 			);
 			collider = hit.collider;
@@ -155,7 +165,7 @@ public class Beam : MonoBehaviour {
 				transform.position, 
 				halfWidth,
 				rayDir.normalized, 
-				rayDir.magnitude, 
+				rayLen, 
 				collisionLayers
 			);
 
@@ -172,13 +182,34 @@ public class Beam : MonoBehaviour {
 		if (collider != null) {
 			GameObject go = collider.gameObject;
 			Projectile p = go.GetComponent<Projectile>();
-			if (p != null) p.OnHit();
+			if (p != null) p.OnHit(Vector3.up); // TODO: should be perpindicular to beam
 
 			HealthController h = go.GetComponent<HealthController>();
 			if (h == null) h = go.GetAncestorComponent<HealthController>();
-			if (h != null) h.TakeDamage(damagePerSecond * Time.deltaTime);
+			if (h != null) {
+				if (particles) particles.Play();
+				if (audio.clip != hitSound) {
+					audio.clip = hitSound;
+					audio.Play();
+				}
+				h.TakeDamage(damagePerSecond * Time.deltaTime);
+			}
+			else if (audio.clip != normalSound) {
+				if (particles) particles.Stop();
+				audio.clip = normalSound;
+				audio.Play();
+			}
 		}
-		else beamDir = rayDir;
+		else {
+			if (particles) particles.Stop();
+			if (audio.clip != normalSound) {
+				audio.clip = normalSound;
+				audio.Play();
+			}
+			beamDir = rayDir.normalized * rayLen;
+		}
+
+		if (particles) particles.transform.position = transform.position + (Vector3)beamDir;
 	}
 
 	void Update() {
@@ -187,7 +218,7 @@ public class Beam : MonoBehaviour {
 		if (segments * 6 != mesh.triangles.Length) Setup();
 		else {
 			for (int i = 0; i < segments; i++) {
-				offsets[i] = (Random.Range(-halfWidth, halfWidth) + offsets[Mathf.Min(i+1, segments-1)]) / 2;
+				offsets[i] = (Random.Range(-halfWidth, halfWidth) * variation + offsets[Mathf.Min(i+1, segments-1)]) / 2;
 			}
 			UpdateMesh();
 		}

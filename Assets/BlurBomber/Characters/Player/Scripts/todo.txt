@@ -13,7 +13,7 @@ enemies
 	bats, hang on ceiling, swoops down
 
 
-player animations needed:
+player:
 	take hit
 	take continuous damage
 	death
