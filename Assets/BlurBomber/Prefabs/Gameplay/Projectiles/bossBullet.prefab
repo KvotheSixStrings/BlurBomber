@@ -131,7 +131,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: .5
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101ae274168be4981a4abf1df610a69d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 10
   disableOnCollision: 0
 --- !u!198 &19846620
 ParticleSystem:
@@ -2342,6 +2342,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: onHitAudioClipName
       value: explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_GravityScale
+      value: .5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

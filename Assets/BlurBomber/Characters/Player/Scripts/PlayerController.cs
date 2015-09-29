@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour {
 		float alpha = Mathf.Clamp01(speed / runSpeed) * 0.5f;
 		dustParticles.startColor = dustParticles.startColor.SetAlpha(alpha);
 
-		if (Input.GetButtonUp("Fire1")) animator.SetTrigger("fire"); 
+		if (Input.GetButton("Fire1")) animator.SetTrigger("fire"); 
 	}
 
 	void RemoveExpiredPowerups() {
