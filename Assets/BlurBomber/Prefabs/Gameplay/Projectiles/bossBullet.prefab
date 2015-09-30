@@ -161,14 +161,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45a35227714c426da8ee187ffac9b5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 120
+  speed: 50
   lifetime: 3
+  size: 2
+  pursuitDamping: .109999999
   gunVelocityDamping: .100000001
   particles: {fileID: 19846620}
   onHitAudioClipName: explosion
   shakeCamera: 1
   onHitParticleSystemName: explosion
   onHitColor: {r: 1, g: 1, b: 1, a: 1}
+  target: {fileID: 0}
 --- !u!114 &11465954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  multiplier: 1
   disableOnCollision: 0
 --- !u!198 &19846620
 ParticleSystem:
@@ -2321,7 +2325,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: speed
-      value: 120
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
@@ -2350,6 +2354,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_GravityScale
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pursuitDamping
+      value: .109999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: size
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

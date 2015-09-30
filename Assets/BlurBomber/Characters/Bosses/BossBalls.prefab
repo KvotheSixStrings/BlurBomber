@@ -366,9 +366,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 11430182, guid: f2a4cd76759064340a2d61875bf66962, type: 2}
-  launchDelay: .600000024
-  sprayDelay: .00999999978
-  projectilesPerShot: 1
+  launchDelay: 3
+  sprayDelay: .5
+  projectilesPerShot: 3
   spraySize: 0
   kickbackForce: 0
   fireSound: {fileID: 8300000, guid: 97bf8d99edf5c43dbbbea375946893c5, type: 3}
@@ -383,8 +383,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e0391d6edd845ea93208d7b9c4efd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDist: 200
   stage: 0
   eye: {fileID: 406706}
+  pupil: {fileID: 21212860}
   gun: {fileID: 11469436}
 --- !u!198 &19833706
 ParticleSystem:

@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour {
 	public ParticleSystem dustParticles;
 	public Gun gun;
 
-	public List<Powerup> powerups = new List<Powerup>();
+	private List<Powerup> powerups = new List<Powerup>();
+	private List<Coin> coins = new List<Coin>();
 
 	private Animator _animator;
 	public Animator animator {
@@ -109,7 +110,8 @@ public class PlayerController : MonoBehaviour {
 		float alpha = Mathf.Clamp01(speed / runSpeed) * 0.5f;
 		dustParticles.startColor = dustParticles.startColor.SetAlpha(alpha);
 
-		if (Input.GetButton("Fire1")) animator.SetTrigger("fire"); 
+		if (Input.GetButtonDown("Fire1")) gun.Charge();
+		if (Input.GetButtonUp("Fire1")) animator.SetTrigger("fire");
 	}
 
 	void RemoveExpiredPowerups() {
@@ -130,5 +132,13 @@ public class PlayerController : MonoBehaviour {
 		float pitch = Mathf.Lerp(0.93f, 1.5f, frac);
 		AudioManager.PlayEffect("step", transform, Mathf.Lerp(1.5f, 0.95f, frac), pitch);
 		AudioManager.PlayEffect("fast", transform, Mathf.Lerp(0, 1.3f, frac), pitch);
+	}
+
+	public void AddPowerup (Powerup powerup) {
+		powerups.Add(powerup);
+	}
+
+	public void AddCoin (Coin coin) {
+		coins.Add(coin);
 	}
 }

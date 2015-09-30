@@ -3,6 +3,8 @@ using System.Collections;
 
 public class BadGuy : MonoBehaviour {
 
+	public float maxDist = 200;
+
 	private Rigidbody2D _target;
 	public Rigidbody2D target {
 		get {

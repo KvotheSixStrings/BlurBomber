@@ -41,7 +41,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 05e439188720149d09854d2f273ce357, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -74,8 +74,8 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: .0297241211, y: 3.60987473}
-  - {x: -.0808105469, y: 55.0228386}
+  - {x: .0303955078, y: -2.05517769}
+  - {x: .0977783203, y: 56.6397285}
 --- !u!114 &11469526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,12 +91,12 @@ MonoBehaviour:
   solid: 1
   addCollider: 1
   points:
-  - position: {x: .0297241211, y: 3.60987473, z: 0}
+  - position: {x: .0303955078, y: -2.05517769, z: 0}
     inTangent: {x: -25.1628418, y: 1.0815599, z: 0}
     outTangent: {x: 10.2538757, y: -1.62839222, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-  - position: {x: -.0808105469, y: 55.0228386, z: 0}
+  - position: {x: .0977783203, y: 56.6397285, z: 0}
     inTangent: {x: -16.9993038, y: 6.55204296, z: 0}
     outTangent: {x: 9.07958794, y: -5.28761482, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -111,7 +111,7 @@ MonoBehaviour:
     seed: 0
     posOffset: {x: 0, y: 0, z: 0}
     dirOffset: 0
-    spacing: 1
+    spacing: .819999993
     positionVariation: 0
     placementFrequency: 1
     allowOverflow: 1
@@ -123,12 +123,12 @@ MonoBehaviour:
     angularPlacementRange: 0
     size: 1
     sizeVariation: 0
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: .875, g: .648884356, b: .244485319, a: 1}
     hueVariation: 0
     saturationVariation: 0
     valueVariation: 0
     alphaVariation: 0
-    sprite: {fileID: 21300000, guid: 024acc20be7ed45eea2998056c83af38, type: 3}
+    sprite: {fileID: 21300006, guid: 36efdf18435bc401582431e740a570ca, type: 3}
     materialIndex: 0
     minTileSize: 100
     outerJoinType: 0

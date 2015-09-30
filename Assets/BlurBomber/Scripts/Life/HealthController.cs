@@ -5,14 +5,6 @@ using Paraphernalia.Utils;
 
 public class HealthController : MonoBehaviour {
 
-	public float recoveryTime = 2;
-	private float recoveryStart = 0;
-	public bool isRecovering {
-		get {
-			return Time.time - recoveryStart < recoveryTime;
-		}
-	}
-
 	public delegate void OnHealthChanged(float health, float prevHealth, float maxHealth);
 	public event OnHealthChanged onHealthChanged = delegate {};
 
@@ -69,9 +61,6 @@ public class HealthController : MonoBehaviour {
 	}
 
 	public void TakeDamage(float damage, bool allowRecovery = true) {
-		if (!allowRecovery || !isRecovering) {
-			recoveryStart = Time.time;
-			health -= damage;
-		}
+		health -= damage;
 	}
 }

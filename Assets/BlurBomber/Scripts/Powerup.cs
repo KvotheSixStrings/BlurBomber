@@ -24,7 +24,7 @@ public class Powerup : MonoBehaviour {
 		startTime = Time.time;
 		gameObject.SetActive(false);
 		PlayerController p = player.GetComponent<PlayerController>();
-		p.powerups.Add(this);
+		p.AddPowerup(this);
 	}
 
 	public bool IsExpired () {
