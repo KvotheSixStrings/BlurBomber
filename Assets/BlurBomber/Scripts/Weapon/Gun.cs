@@ -18,6 +18,7 @@ public class Gun : MonoBehaviour {
 	public float kickbackForce = 1f;
 	public AudioClip fireSound;
 
+	private bool charging = false;
 	private float chargeStart = 0;
 	private Projectile chargeProjectile;
 	private Transform chargeParticleParent;
@@ -47,7 +48,12 @@ public class Gun : MonoBehaviour {
 		return projectile;
 	}
 
+	void OnDisable () {
+		charging = false;
+	}
+
 	public void Charge () {
+		charging = true;
 		chargeStart = Time.time;
 		chargeProjectile = GetNextProjectile();
 		if (chargeProjectile.particles) {
@@ -61,16 +67,18 @@ public class Gun : MonoBehaviour {
 
 	public float Shoot (Vector3 dir, Vector3 parentVelocity, Rigidbody2D target = null) {
 		if (chargeProjectile != null) {
+			charging = false;
 			float frac = (Time.time - chargeStart) / maxChargeTime;
+			float multiplier = Mathf.Lerp(1, maxChargeMultiplier, frac);
 			Damage d = chargeProjectile.gameObject.GetComponent<Damage>();
-			if (d) d.multiplier = Mathf.Lerp(1, maxChargeMultiplier, frac);
+			if (d) d.multiplier = multiplier;
 			float size = Mathf.Lerp(1, maxChargeSize, frac);
 			chargeProjectile.size = size;
 			chargeProjectile.transform.localScale = projectilePrefab.transform.localScale * size;
 			chargeProjectile.particles.transform.parent = chargeParticleParent;
 			chargeProjectile.particles.transform.localPosition = chargeParticlePosition;
 			StartCoroutine(ChargeShotCoroutine(dir, parentVelocity, target));
-			return kickbackForce * maxChargeMultiplier;
+			return kickbackForce * multiplier;
 		}
 		if (Time.time - launchTime > launchDelay) {
 			launchTime = Time.time;
@@ -104,6 +112,13 @@ public class Gun : MonoBehaviour {
 			projectile.Fire(transform.position + Random.insideUnitSphere * 0.1f, Quaternion.AngleAxis(ang, Vector3.forward) * dir, parentVelocity);
 			AudioManager.PlayEffect(fireSound, transform, Random.Range(0.7f, 1), Random.Range(0.95f, 1.05f));
 			if (sprayDelay > Time.deltaTime) yield return new WaitForSeconds(sprayDelay);
+		}
+	}
+
+	void Update () {
+		if (chargeProjectile != null && !charging) {
+			chargeProjectile.particles.transform.parent = chargeParticleParent;
+			chargeProjectile.particles.transform.localPosition = chargeParticlePosition;
 		}
 	}
 }

@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5edc519ec214b54a796394844461cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: {fileID: 8300000, guid: 57c90cb32529a4f7884abe42a0e06ba4, type: 3}
+  music: {fileID: 8300000, guid: 53dee7fb12da34581ad633662f599f55, type: 3}
   clips:
   - {fileID: 8300000, guid: edd577668eed743f8af3c858a7bbf3e7, type: 3}
   - {fileID: 8300000, guid: 8c408735ce4b345649866978bdced446, type: 3}
@@ -49,9 +49,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c11f4fb3112d7400988af07d5927b3f3, type: 3}
   - {fileID: 8300000, guid: 35fb24fac8856494d99ed138dbbf5b2a, type: 3}
   - {fileID: 8300000, guid: cb76c718ce2284cb382f8af20e83bdaa, type: 3}
+  - {fileID: 8300000, guid: 9ec4c540e868540ea8de7f2022ffb71a, type: 3}
   sfxVolume: 1
   sfxSourcesCount: 5
-  musicVolume: 0
+  musicVolume: .629999995
   minPlayInterval: .00999999978
 --- !u!1001 &100100000
 Prefab:

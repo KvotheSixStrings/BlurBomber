@@ -149,7 +149,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 81.426651, y: 9.53674316e-07, z: 0}
+  m_LocalPosition: {x: 1.80000877, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 499778}
@@ -174,7 +174,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.8000002, y: -4.30000019, z: 0}
+  m_LocalPosition: {x: 15.1000004, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 435378}
@@ -223,7 +223,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.55999994
+  m_Radius: 2.20000005
 --- !u!60 &6018656
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -238,8 +238,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0, y: 3.9000001}
-      - {x: 81.4266586, y: 3.9000001}
-      - {x: 81.4266586, y: -3.9000001}
+      - {x: 1.79999995, y: 3.9000001}
+      - {x: 1.79999995, y: -3.9000001}
       - {x: 0, y: -3.9000001}
 --- !u!82 &8278614
 AudioSource:
@@ -331,10 +331,10 @@ MonoBehaviour:
   segments: 16
   halfWidth: 3.9000001
   rayDir: {x: 1, y: 0}
-  rayLen: 500
+  rayLen: 1.79999995
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 512
   ignoredColliders: []
   particles: {fileID: 19833706}
   variation: .330000013
@@ -349,7 +349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31839d8b31cce4d798caa4e0d9e650d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoveryTime: 2
   deathSound: {fileID: 8300000, guid: b640e5345fdd34bec9d42e300e201aec, type: 3}
   particlesName: explosion
   disableOnDeath: 1
@@ -365,6 +364,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dedb22627c5f949e9805df29b599af90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxChargeTime: 1
+  maxChargeMultiplier: 3
+  maxChargeSize: 2
   projectilePrefab: {fileID: 11430182, guid: f2a4cd76759064340a2d61875bf66962, type: 2}
   launchDelay: 3
   sprayDelay: .5
@@ -384,10 +386,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDist: 200
+  beamDir: {x: 1, y: 0, z: 0}
   stage: 0
+  turnSpeed: 1
   eye: {fileID: 406706}
   pupil: {fileID: 21212860}
   gun: {fileID: 11469436}
+  beam: {fileID: 11420728}
+  beamWidth: 300
+  beamChargeTime: 3
+  beamFireTime: 3
+  beamThreshold: .899999976
 --- !u!198 &19833706
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1492,7 +1501,7 @@ SpriteRenderer:
   m_SortingLayerID: 999404773
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: aacaef5f28c5b4a6295b94bf85551da4, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
 --- !u!212 &21293966
 SpriteRenderer:
   m_ObjectHideFlags: 1

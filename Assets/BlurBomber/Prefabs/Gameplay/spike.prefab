@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21249072}
   - 61: {fileID: 6192596}
   - 114: {fileID: 11452224}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,6 +55,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
+  multiplier: 1
   disableOnCollision: 0
 --- !u!212 &21249072
 SpriteRenderer:
@@ -94,6 +95,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300004, guid: 36efdf18435bc401582431e740a570ca,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 184008}

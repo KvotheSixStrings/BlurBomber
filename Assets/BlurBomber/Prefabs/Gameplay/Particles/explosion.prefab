@@ -167,7 +167,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174614}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: -.707106829}
-  m_LocalPosition: {x: -362.675201, y: -36.6318932, z: -.160458565}
+  m_LocalPosition: {x: -545.418274, y: 43.7100868, z: -.160458565}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 492840}
@@ -3425,7 +3425,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 5
+      scalar: 6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3440,7 +3440,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .600000024
+          value: .666666687
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -8361,7 +8361,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1326221797
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_MaxParticleSize: .5
   m_CameraVelocityScale: 0
@@ -8469,7 +8469,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1326221797
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_RenderMode: 0
   m_MaxParticleSize: .5
   m_CameraVelocityScale: 0
@@ -8577,7 +8577,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1326221797
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_RenderMode: 1
   m_MaxParticleSize: .5
   m_CameraVelocityScale: 0
@@ -8613,7 +8613,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1326221797
-  m_SortingOrder: 0
+  m_SortingOrder: -3
   m_RenderMode: 1
   m_MaxParticleSize: .5
   m_CameraVelocityScale: 0

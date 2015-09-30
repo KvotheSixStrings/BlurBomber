@@ -54,6 +54,16 @@ public class PlayerController : MonoBehaviour {
 			return _motor;
 		}
 	}
+
+	private HealthController _healthController;
+	public HealthController healthController {
+		get {
+			if (_healthController == null) {
+				_healthController = GetComponent<HealthController>(); 
+			}
+			return _healthController;
+		}
+	}
 	
 	void Update () {
 		RemoveExpiredPowerups();

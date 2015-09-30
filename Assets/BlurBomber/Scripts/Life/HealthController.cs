@@ -29,26 +29,32 @@ public class HealthController : MonoBehaviour {
 			return _health;
 		}
 		set {
-			if (value <= 0 && _health > 0) {
-				if (deathSound != null) AudioManager.PlayEffect(deathSound);
-				if (!string.IsNullOrEmpty(particlesName)) ParticleManager.Play(particlesName, transform.position);
-				onAnyDeath(this);
-				onDeath();
-				if (disableOnDeath) GameObjectUtils.Destroy(gameObject);
-			}
-			else if (value > 0 && _health == 0) {
-				onResurection();
-			}
-			
-			if (_health != value) {
-				onHealthChanged(value, _health, maxHealth);
-				onAnyHealthChanged(this, value, _health, maxHealth);
-				_health = value;
-			}
-
+			float prevHealth = _health;
+			_health = value;
 			if (_health > maxHealth) {
 				_health = maxHealth;
 			}
+			else if (_health < 0) {
+				_health = 0;
+			}
+
+			if (_health == 0 && prevHealth > 0) {
+				if (deathSound != null) AudioManager.PlayEffect(deathSound);
+				if (!string.IsNullOrEmpty(particlesName)) ParticleManager.Play(particlesName, transform.position);
+				if (disableOnDeath) gameObject.SetActive(false);
+				onAnyDeath(this);
+				onDeath();
+			}
+			else if (_health > 0 && prevHealth == 0) {
+				onResurection();
+			}
+			
+			if (prevHealth != _health) {
+				onHealthChanged(_health, prevHealth, maxHealth);
+				onAnyHealthChanged(this, _health, prevHealth, maxHealth);
+			}
+
+			
 		}
 	}
 

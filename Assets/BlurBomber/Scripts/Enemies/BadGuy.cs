@@ -46,11 +46,17 @@ public class BadGuy : MonoBehaviour {
 		}
 	}
 
-	private HealthController healthController;
-	protected bool alive = true;
-	void Awake () {
-		healthController = GetComponent<HealthController>();
+	private HealthController _healthController;
+	public HealthController healthController {
+		get {
+			if (_healthController == null) {
+				_healthController = GetComponent<HealthController>();
+			}
+			return _healthController;
+		}
 	}
+
+	protected bool alive = true;
 
 	void OnEnable() {
 		healthController.onDeath += OnDeath;
