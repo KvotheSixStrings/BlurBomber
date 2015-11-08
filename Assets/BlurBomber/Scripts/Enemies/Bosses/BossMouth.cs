@@ -14,7 +14,6 @@ public class BossMouth : BadGuy {
 	public float beamChargeTime = 1.5f;
 	public float beamFireTime = 0.5f;
 	public float beamThreshold = 0.9f;
-	private bool beamAnimating = false;
 
 	void Update () {
 		if (!alive || target == null || (target.transform.position - transform.position).magnitude > maxDist) return;
