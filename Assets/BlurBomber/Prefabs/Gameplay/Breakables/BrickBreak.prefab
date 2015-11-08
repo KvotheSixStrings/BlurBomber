@@ -12,7 +12,6 @@ GameObject:
   - 61: {fileID: 6132436}
   - 114: {fileID: 11430078}
   - 50: {fileID: 5083908}
-  - 114: {fileID: 11488202}
   m_Layer: 8
   m_Name: BrickBreak
   m_TagString: Untagged
@@ -27,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -468.390015, y: -3.5999999, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: -627.150024, y: 95.5899963, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,27 +71,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31839d8b31cce4d798caa4e0d9e650d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoveryTime: 2
   deathSound: {fileID: 8300000, guid: 387d27f9ef1824b59a222bc89a32304b, type: 3}
   particlesName: smoke
   disableOnDeath: 1
-  maxHealth: 3
---- !u!114 &11488202
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 182438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458d32b793c8845ff9ebd81dba50e2bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minSpeed: 10
-  maxSpeed: 40
-  maxDamage: 10
-  takeXDamage: 0
-  takeYDamage: 1
+  maxHealth: 1
 --- !u!212 &21202780
 SpriteRenderer:
   m_ObjectHideFlags: 1

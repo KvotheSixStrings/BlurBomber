@@ -109,7 +109,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184172}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -.342916518, w: .939365923}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 9.99999905, y: 10, z: 1}
   m_Children:
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196988}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94e0391d6edd845ea93208d7b9c4efd4, type: 3}
   m_Name: 
@@ -393,9 +393,9 @@ MonoBehaviour:
   pupil: {fileID: 21212860}
   gun: {fileID: 11469436}
   beam: {fileID: 11420728}
-  beamWidth: 300
-  beamChargeTime: 3
-  beamFireTime: 3
+  beamWidth: 2
+  beamChargeTime: 1.5
+  beamFireTime: .5
   beamThreshold: .899999976
 --- !u!198 &19833706
 ParticleSystem:

@@ -4,6 +4,7 @@ using Paraphernalia.Components;
 
 public class StageController : MonoBehaviour {
 
+	public AudioClip victoryMusic;
 	public PlayerController player;
 	public BadGuy boss;
 	public Transform startSpawn;
@@ -30,6 +31,11 @@ public class StageController : MonoBehaviour {
 	}
 
 	void OnBossDeath () {
+		AudioManager.CrossfadeMusic(victoryMusic, 1);
+		StartCoroutine("WinCoroutine");
+	}
+
+	void WinCoroutine () {
 		Debug.Log("YOU WIN!!!");
 		// load main menu
 		// set stuff in game manager

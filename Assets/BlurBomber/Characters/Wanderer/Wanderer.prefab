@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11444452}
   - 114: {fileID: 11429998}
   - 114: {fileID: 11489436}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wanderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -358.119995, y: 18.8899994, z: 1.52587891e-05}
+  m_LocalPosition: {x: -199.300003, y: -56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  multiplier: 1
   disableOnCollision: 0
 --- !u!114 &11444452
 MonoBehaviour:
@@ -109,7 +110,6 @@ MonoBehaviour:
   shouldJump: 0
   targetVelocity: {x: 0, y: 0}
   maxIncline: 30
-  _rigidbody2D: {fileID: 0}
 --- !u!114 &11447666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5236cc53df2874c379af8f11ae21546e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDist: 200
   speed: 10
 --- !u!114 &11489436
 MonoBehaviour:
@@ -133,7 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31839d8b31cce4d798caa4e0d9e650d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoveryTime: 2
   deathSound: {fileID: 8300000, guid: b640e5345fdd34bec9d42e300e201aec, type: 3}
   particlesName: explosion
   disableOnDeath: 1
