@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 776, y: 104.808128, z: 8.80000019}
+  m_LocalPosition: {x: -1.95412111, y: .0702001154, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,62 +76,52 @@ MonoBehaviour:
   solid: 1
   addCollider: 0
   points:
-  - position: {x: -226.723358, y: 35.4640541, z: 0}
-    inTangent: {x: -.648581743, y: -.761144996, z: 0}
-    outTangent: {x: .648581684, y: .761144996, z: 0}
+  - position: {x: 1.42826271, y: 2.09356999, z: 0}
+    inTangent: {x: -.991548598, y: .129735157, z: 0}
+    outTangent: {x: .991548717, y: -.129734948, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-  - position: {x: -217.355377, y: 47.4639587, z: 0}
-    inTangent: {x: -.922263622, y: -.386561602, z: 0}
-    outTangent: {x: .922263563, y: .386561722, z: 0}
+  - position: {x: 2.82123637, y: 3.08622551, z: 0}
+    inTangent: {x: -.792615533, y: .609721839, z: 0}
+    outTangent: {x: .792615533, y: -.609721839, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-  - position: {x: -183.224121, y: 53.6965179, z: 0}
+  - position: {x: 2.81740355, y: -.0203005858, z: 0}
     inTangent: {x: -1, y: -0, z: -0}
     outTangent: {x: 1, y: 0, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-  - position: {x: -175.774658, y: 87.3214798, z: 0}
-    inTangent: {x: -.903485656, y: -.428618312, z: 0}
-    outTangent: {x: .903485596, y: .428618491, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-  - position: {x: -143.558167, y: 95.0324478, z: 0}
-    inTangent: {x: -.995224059, y: .0976169333, z: 0}
-    outTangent: {x: .995224059, y: -.0976169333, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-  - position: {x: -104.614502, y: 84.5402985, z: 0}
+  - position: {x: 5.44997501, y: -1.71532035, z: 0}
     inTangent: {x: -1, y: -0, z: -0}
     outTangent: {x: 1, y: 0, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-  - position: {x: -122.614288, y: -.659887314, z: 0}
-    inTangent: {x: .555193603, y: .831721187, z: 0}
-    outTangent: {x: -.555193603, y: -.831721187, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-  - position: {x: -197.694885, y: -54.9010201, z: 0}
-    inTangent: {x: .47451663, y: -.88024652, z: 0}
-    outTangent: {x: -.47451663, y: .88024652, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-  - position: {x: -221.373444, y: -48.7356529, z: 0}
+  - position: {x: 2.96513653, y: -1.72017324, z: 0}
     inTangent: {x: -1, y: -0, z: -0}
     outTangent: {x: 1, y: 0, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-  - position: {x: -226.02713, y: 2.83376312, z: 0}
-    inTangent: {x: .971136153, y: -.238525853, z: 0}
-    outTangent: {x: -.971136153, y: .238525763, z: 0}
+  - position: {x: -.372977734, y: 1.05115402, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-  - position: {x: -231.445801, y: 24.2548752, z: 0}
-    inTangent: {x: .98534596, y: -.170567453, z: 0}
-    outTangent: {x: -.98534596, y: .170567453, z: 0}
+  - position: {x: -.354760885, y: -1.19185734, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-  - position: {x: -239.951447, y: 35.4611511, z: 0}
+  - position: {x: -1.70704317, y: -3.29290438, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -3.64364004, y: .306470752, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: .698593855, y: 3.36395383, z: 0}
     inTangent: {x: -1, y: -0, z: -0}
     outTangent: {x: 1, y: 0, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
