@@ -90,15 +90,17 @@ public class Gun : MonoBehaviour {
 
 	IEnumerator ChargeShotCoroutine(Vector3 dir, Vector3 parentVelocity, Rigidbody2D target) {
 		chargeProjectile.target = target;
+		chargeProjectile.Ready(transform, false);
 		float ang = spraySize * Random.Range(-0.5f, 0.5f);
-		chargeProjectile.Fire(transform.position + Random.insideUnitSphere * 0.1f, Quaternion.AngleAxis(ang, Vector3.forward) * dir, parentVelocity);
+		chargeProjectile.Fire(Quaternion.AngleAxis(ang, Vector3.forward) * dir, parentVelocity);
 		AudioManager.PlayEffect(fireSound, transform, Random.Range(0.7f, 1), Random.Range(1.05f, 1.2f));
 		if (sprayDelay > Time.deltaTime) yield return new WaitForSeconds(sprayDelay);
 		for (int i = 1; i < projectilesPerShot; i++) {
 			Projectile projectile = GetNextProjectile();
 			projectile.target = target;
+			projectile.Ready(transform, false);
 			ang = spraySize * Random.Range(-0.5f, 0.5f);
-			projectile.Fire(transform.position + Random.insideUnitSphere * 0.1f, Quaternion.AngleAxis(ang, Vector3.forward) * dir, parentVelocity);
+			projectile.Fire(Quaternion.AngleAxis(ang, Vector3.forward) * dir, parentVelocity);
 			AudioManager.PlayEffect(fireSound, transform, Random.Range(0.7f, 1), Random.Range(0.95f, 1.05f));
 			if (sprayDelay > Time.deltaTime) yield return new WaitForSeconds(sprayDelay);
 		}
@@ -108,8 +110,9 @@ public class Gun : MonoBehaviour {
 		for (int i = 0; i < projectilesPerShot; i++) {
 			Projectile projectile = GetNextProjectile();
 			projectile.target = target;
+			projectile.Ready(transform, false);
 			float ang = spraySize * Random.Range(-0.5f, 0.5f);
-			projectile.Fire(transform.position + Random.insideUnitSphere * 0.1f, Quaternion.AngleAxis(ang, Vector3.forward) * dir, parentVelocity);
+			projectile.Fire(Quaternion.AngleAxis(ang, Vector3.forward) * dir, parentVelocity);
 			AudioManager.PlayEffect(fireSound, transform, Random.Range(0.7f, 1), Random.Range(0.95f, 1.05f));
 			if (sprayDelay > Time.deltaTime) yield return new WaitForSeconds(sprayDelay);
 		}

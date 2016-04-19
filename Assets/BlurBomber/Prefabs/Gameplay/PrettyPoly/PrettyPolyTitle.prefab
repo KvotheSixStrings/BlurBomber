@@ -1,0 +1,334 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &118468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 490798}
+  - 33: {fileID: 3372148}
+  - 23: {fileID: 2317218}
+  - 114: {fileID: 11427388}
+  m_Layer: 14
+  m_Name: PrettyPolyTitle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &490798
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -664.7, y: -4.5967846, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!23 &2317218
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118468}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 596b292e3894f4b888871cdaf493ba79, type: 2}
+  - {fileID: 2100000, guid: 05e439188720149d09854d2f273ce357, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1860876175
+  m_SortingOrder: -100
+--- !u!33 &3372148
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118468}
+  m_Mesh: {fileID: 0}
+--- !u!114 &11427388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f847f9ec65d4b99bcc7422fcc4635b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closed: 1
+  solid: 1
+  addCollider: 0
+  points:
+  - position: {x: -66.57129, y: 111.32057, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -16.116089, y: 98.678665, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -24.720154, y: 23.949602, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: 70.095215, y: 18.658756, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: 72.93799, y: -6.7639103, z: 0}
+    inTangent: {x: 0.6023715, y: 0.79821587, z: 0}
+    outTangent: {x: -0.6023715, y: -0.79821587, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: 21.711975, y: -18.669405, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -21.17749, y: -10.243005, z: 0}
+    inTangent: {x: 0.9980731, y: 0.06204876, z: 0}
+    outTangent: {x: -0.9980731, y: -0.06204876, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -61.315125, y: -23.83108, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -74.08417, y: 19.435787, z: 0}
+    inTangent: {x: 0.3976964, y: -0.91751707, z: 0}
+    outTangent: {x: -0.39769644, y: 0.91751707, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  - position: {x: -100.61218, y: 66.83034, z: 0}
+    inTangent: {x: -1, y: -0, z: -0}
+    outTangent: {x: 1, y: 0, z: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+  subdivisions: 4
+  sortingLayerName: Background
+  sortingOrder: -100
+  curveType: 1
+  meshLayers:
+  - name: Rock
+    layerType: 3
+    seed: 0
+    posOffset: {x: 0, y: 0, z: 0}
+    dirOffset: 0
+    spacing: 0.01
+    positionVariation: 0
+    placementFrequency: 0
+    allowOverflow: 0
+    followPath: 0
+    alternateAngles: 0
+    angle: 0
+    angleVariation: 0
+    naturalAngle: 0
+    angularPlacementRange: 0
+    size: 0.01
+    sizeVariation: 0
+    color: {r: 0.24599999, g: 0.23607855, b: 0.203688, a: 1}
+    hueVariation: 0
+    saturationVariation: 0
+    valueVariation: 0
+    alphaVariation: 0
+    sprite: {fileID: 0}
+    materialIndex: 0
+    minTileSize: 0
+    outerJoinType: 0
+    innerJoinType: 0
+    allowStretching: 0
+    isTrigger: 0
+    SHOW_LEFT: 1
+    SHOW_RIGHT: 1
+  - name: rocks
+    layerType: 2
+    seed: -18
+    posOffset: {x: 0, y: 0, z: 0}
+    dirOffset: 5.43
+    spacing: 0.31
+    positionVariation: 2.82
+    placementFrequency: 0.37
+    allowOverflow: 0
+    followPath: 0
+    alternateAngles: 0
+    angle: 0
+    angleVariation: 42
+    naturalAngle: 102
+    angularPlacementRange: 0.34
+    size: 3.04
+    sizeVariation: 1.09
+    color: {r: 0.33088237, g: 0.30635142, b: 0.22626515, a: 0.066}
+    hueVariation: 0.07
+    saturationVariation: 0.11
+    valueVariation: 0
+    alphaVariation: 0
+    sprite: {fileID: 21300010, guid: 36efdf18435bc401582431e740a570ca, type: 3}
+    materialIndex: 1
+    minTileSize: 0
+    outerJoinType: 0
+    innerJoinType: 0
+    allowStretching: 0
+    isTrigger: 0
+    SHOW_LEFT: 1
+    SHOW_RIGHT: 1
+  - name: rocks
+    layerType: 0
+    seed: -18
+    posOffset: {x: 0, y: 0, z: 0}
+    dirOffset: -3.35
+    spacing: 0.31
+    positionVariation: 0.49
+    placementFrequency: 0.79
+    allowOverflow: 0
+    followPath: 0
+    alternateAngles: 0
+    angle: 0
+    angleVariation: 72
+    naturalAngle: -120
+    angularPlacementRange: 0.78
+    size: 3.04
+    sizeVariation: 1.09
+    color: {r: 0.25, g: 0.23448275, b: 0.18382353, a: 1}
+    hueVariation: 0.07
+    saturationVariation: 0.11
+    valueVariation: 0
+    alphaVariation: 0
+    sprite: {fileID: 21300010, guid: 36efdf18435bc401582431e740a570ca, type: 3}
+    materialIndex: 1
+    minTileSize: 0
+    outerJoinType: 0
+    innerJoinType: 0
+    allowStretching: 0
+    isTrigger: 0
+    SHOW_LEFT: 1
+    SHOW_RIGHT: 1
+  - name: grass
+    layerType: 0
+    seed: 0
+    posOffset: {x: 0, y: 0, z: 0}
+    dirOffset: 0
+    spacing: 0.31
+    positionVariation: 0
+    placementFrequency: 1
+    allowOverflow: 0
+    followPath: 0
+    alternateAngles: 0
+    angle: 0
+    angleVariation: 42
+    naturalAngle: 102
+    angularPlacementRange: 0.69
+    size: 10.77
+    sizeVariation: 0.18
+    color: {r: 0.31764707, g: 0.53333336, b: 0.31764707, a: 1}
+    hueVariation: 0
+    saturationVariation: 0
+    valueVariation: 0
+    alphaVariation: 0
+    sprite: {fileID: 21300000, guid: 36efdf18435bc401582431e740a570ca, type: 3}
+    materialIndex: 1
+    minTileSize: 0
+    outerJoinType: 0
+    innerJoinType: 0
+    allowStretching: 0
+    isTrigger: 0
+    SHOW_LEFT: 1
+    SHOW_RIGHT: 1
+  - name: flowers
+    layerType: 0
+    seed: -18
+    posOffset: {x: 0, y: 0, z: 0}
+    dirOffset: 5.43
+    spacing: 0.31
+    positionVariation: 2.82
+    placementFrequency: 0.37
+    allowOverflow: 0
+    followPath: 0
+    alternateAngles: 0
+    angle: 0
+    angleVariation: 42
+    naturalAngle: 102
+    angularPlacementRange: 0.34
+    size: 3.04
+    sizeVariation: 1.09
+    color: {r: 1, g: 0.32156864, b: 0.5882353, a: 1}
+    hueVariation: 0.07
+    saturationVariation: 0.11
+    valueVariation: 0
+    alphaVariation: 0
+    sprite: {fileID: 21300010, guid: 36efdf18435bc401582431e740a570ca, type: 3}
+    materialIndex: 1
+    minTileSize: 0
+    outerJoinType: 0
+    innerJoinType: 0
+    allowStretching: 0
+    isTrigger: 0
+    SHOW_LEFT: 1
+    SHOW_RIGHT: 1
+  - name: spikes
+    layerType: 0
+    seed: 0
+    posOffset: {x: 0, y: 0, z: 0}
+    dirOffset: 6.86
+    spacing: 0.87
+    positionVariation: 0
+    placementFrequency: 1
+    allowOverflow: 0
+    followPath: 1
+    alternateAngles: 0
+    angle: 270
+    angleVariation: 0
+    naturalAngle: -126
+    angularPlacementRange: 0.9
+    size: 5.8
+    sizeVariation: 0.18
+    color: {r: 0.7352941, g: 0.72008115, b: 0.6704152, a: 1}
+    hueVariation: 0.03
+    saturationVariation: 0
+    valueVariation: 0.18
+    alphaVariation: 0
+    sprite: {fileID: 21300004, guid: 36efdf18435bc401582431e740a570ca, type: 3}
+    materialIndex: 1
+    minTileSize: 0
+    outerJoinType: 0
+    innerJoinType: 0
+    allowStretching: 0
+    isTrigger: 0
+    SHOW_LEFT: 1
+    SHOW_RIGHT: 1
+  objectLayers: []
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 118468}
+  m_IsPrefabParent: 1
