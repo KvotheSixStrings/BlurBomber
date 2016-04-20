@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 134678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -567.599976, y: -18.5, z: 0}
+  m_LocalPosition: {x: -289.27188, y: 24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,8 +49,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -69,13 +71,14 @@ EdgeCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 134678}
   m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: .0303955078, y: -2.05517769}
-  - {x: .0977783203, y: 56.6397285}
+  - {x: 0.030395508, y: -2.0551777}
+  - {x: 0.06378174, y: 26.390274}
 --- !u!114 &11469526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,14 +94,14 @@ MonoBehaviour:
   solid: 1
   addCollider: 1
   points:
-  - position: {x: .0303955078, y: -2.05517769, z: 0}
-    inTangent: {x: -25.1628418, y: 1.0815599, z: 0}
-    outTangent: {x: 10.2538757, y: -1.62839222, z: 0}
+  - position: {x: 0.030395508, y: -2.0551777, z: 0}
+    inTangent: {x: -25.162842, y: 1.0815599, z: 0}
+    outTangent: {x: 10.253876, y: -1.6283922, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-  - position: {x: .0977783203, y: 56.6397285, z: 0}
-    inTangent: {x: -16.9993038, y: 6.55204296, z: 0}
-    outTangent: {x: 9.07958794, y: -5.28761482, z: 0}
+  - position: {x: 0.06378174, y: 26.390274, z: 0}
+    inTangent: {x: -16.999304, y: 6.552043, z: 0}
+    outTangent: {x: 9.079588, y: -5.287615, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
   subdivisions: 10
@@ -111,7 +114,7 @@ MonoBehaviour:
     seed: 0
     posOffset: {x: 0, y: 0, z: 0}
     dirOffset: 0
-    spacing: .819999993
+    spacing: 0.82
     positionVariation: 0
     placementFrequency: 1
     allowOverflow: 1
@@ -123,12 +126,29 @@ MonoBehaviour:
     angularPlacementRange: 0
     size: 1
     sizeVariation: 0
-    color: {r: .875, g: .648884356, b: .244485319, a: 1}
+    color: {r: 0.875, g: 0.64888436, b: 0.24448532, a: 1}
     hueVariation: 0
     saturationVariation: 0
     valueVariation: 0
     alphaVariation: 0
-    sprite: {fileID: 21300006, guid: 36efdf18435bc401582431e740a570ca, type: 3}
+    sprites:
+    - {fileID: 21300006, guid: 36efdf18435bc401582431e740a570ca, type: 3}
+    spriteDistributionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
     materialIndex: 0
     minTileSize: 100
     outerJoinType: 0
